@@ -1,0 +1,3 @@
+﻿  main.cpp
+c:\users\dell\desktop\project\test_clientcpp\testclient\testclient\main.cpp(30): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+  testclient.vcxproj -> C:\Users\dell\Desktop\project\ServerCpp\x64\Debug\testclient.exe
