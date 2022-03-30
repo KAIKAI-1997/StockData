@@ -20,13 +20,9 @@
   THE SOFTWARE.
 */
 
+
 #ifndef cJSON__h
 #define cJSON__h
-
-#ifdef __cplusplus
-extern "C"
-{
-#endif
 
 #if !defined(__WINDOWS__) && (defined(WIN32) || defined(WIN64) || defined(_MSC_VER) || defined(_WIN32))
 #define __WINDOWS__
@@ -293,8 +289,7 @@ CJSON_PUBLIC(char*) cJSON_SetValuestring(cJSON *object, const char *valuestring)
 CJSON_PUBLIC(void *) cJSON_malloc(size_t size);
 CJSON_PUBLIC(void) cJSON_free(void *object);
 
-#ifdef __cplusplus
-}
 #endif
 
-#endif
+
+

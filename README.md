@@ -37,15 +37,15 @@ number默认30
 date默认今天
 
 2.k线
-localhost/:daytype(day1|day7|day30)/:index?startday=YYYY-MM-DD&endday=YYYY-MM-DD&number=30
-例：http://192.168.2.212:3080/day1/600519?startday=2022-03-08&endday=2022-03-09&number=30
+localhost/:daytype(day1|day7|day30|day365)/:index?startday=YYYY-MM-DD&endday=YYYY-MM-DD&number=30
+例：http://192.168.2.212:3080/day1/600519?endday=2022-03-09&number=30
 ？后parameter可以不传
 number默认60
 startday为空
 endday默认今天
-开始日期和结束日期为同一天时无返回数据
+开始日期和结束日期为同一天时无返回数据W
 
-3. 分时数据
+1. 分时数据
 http://192.168.2.212:3080/min/:index
 例：http://192.168.2.212:3080/min/600519
 

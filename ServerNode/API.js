@@ -161,7 +161,22 @@ router.get('/:daytype(day1|day7|day30|day365)/:index', (req, res)=>{
                 "msg":""
             }
 
-            client.write(JSON.stringify(front_return))
+            var end_fetch = {
+                "code":200,
+                "data":{
+                    "aim":"insert",
+                    "points":data_final,
+                    "details":{
+                        "index":req.params.index,
+                        "type":"day",
+                        "market":result["data"]["sh"+req.params.index]["qt"]["market"][0],
+                        "name":result["data"]["sh"+req.params.index]["qt"]["sh"+req.params.index][1]
+                    }
+                },
+                "msg":""
+            }
+
+            client.write(JSON.stringify(end_fetch))
             res.send(front_return)
         });  
     }).on("error", function (err) {  
