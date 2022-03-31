@@ -96,7 +96,18 @@ router.get('/:daytype(day1|day7|day30|day365)/:index', (req, res)=>{
             //console.log("fetching from "+URL)
             
             result= JSON.parse(result)
-            
+
+            //no data response
+            if(result["msg"]=="param error"){
+                var error_return = {
+                    "code":503,
+                    "data":{},
+                    "msg":"param error"
+                }
+                res.send(error_return)
+                return ;
+            }
+
             if(daytype==1){
                 data_final = result["data"]["sh"+req.params.index]["qfqday"]
             }
@@ -186,6 +197,7 @@ router.get('/:daytype(day1|day7|day30|day365)/:index', (req, res)=>{
             "data":{},
             "msg":""
         }
+        res.send(error_return)
     }); 
 })
 
@@ -231,6 +243,17 @@ router.get('/:mtype(m1|m5|m15|m30|m60)/:index', (req, res)=>{
             
 
             result= JSON.parse(result)
+
+            //no data response
+            if(result["msg"]=="param error"){
+                var error_return = {
+                    "code":503,
+                    "data":{},
+                    "msg":"param error"
+                }
+                res.send(error_return)
+                return ;
+            }
 
             //set communicate json content
             var front_return = {
@@ -287,6 +310,17 @@ router.get('/min/:index', (req, res)=>{
             
 
             result= JSON.parse(result)
+
+            //no data response
+            if(result["msg"]=="code param error"){
+                var error_return = {
+                    "code":503,
+                    "data":{},
+                    "msg":"param error"
+                }
+                res.send(error_return)
+                return ;
+            }
 
             //set communicate json content
             var front_return = {
