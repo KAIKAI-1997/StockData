@@ -164,7 +164,7 @@ router.get('/:daytype(day1|day7|day30|day365)/:index', (req, res)=>{
                     "points":data_final,
                     "details":{
                         "index":req.params.index,
-                        "type":"day",
+                        "type":req.params.daytype,
                         "market":result["data"]["sh"+req.params.index]["qt"]["market"][0],
                         "name":result["data"]["sh"+req.params.index]["qt"]["sh"+req.params.index][1]
                     }
@@ -179,9 +179,9 @@ router.get('/:daytype(day1|day7|day30|day365)/:index', (req, res)=>{
                     "points":data_final,
                     "details":{
                         "index":req.params.index,
-                        "type":"day",
+                        "type":req.params.daytype,
                         "market":result["data"]["sh"+req.params.index]["qt"]["market"][0],
-                        "name":result["data"]["sh"+req.params.index]["qt"]["sh"+req.params.index][1]
+                        "name":result["data"]["sh"+req.params.index]["qt"]["sh"+req.params.index]
                     }
                 },
                 "msg":""
@@ -264,12 +264,28 @@ router.get('/:mtype(m1|m5|m15|m30|m60)/:index', (req, res)=>{
                         "index":req.params.index,
                         "type":req.params.mtype,
                         "market":result["data"]["sh"+req.params.index]["qt"]["market"][0],
+                        "name":result["data"]["sh"+req.params.index]["qt"]["sh"+req.params.index]
+                    }
+                },
+                "msg":""
+            }
+
+            var end_fetch = {
+                "code":200,
+                "data":{
+                    "aim":"insert",
+                    "points":data_final,
+                    "details":{
+                        "index":req.params.index,
+                        "type":req.params.mtype,
+                        "market":result["data"]["sh"+req.params.index]["qt"]["market"][0],
                         "name":result["data"]["sh"+req.params.index]["qt"]["sh"+req.params.index][1]
                     }
                 },
                 "msg":""
             }
-            client.write(JSON.stringify(front_return))
+
+            client.write(JSON.stringify(end_fetch))
             res.send(front_return)
         });  
     }).on("error", function (err) {  
@@ -331,12 +347,12 @@ router.get('/min/:index', (req, res)=>{
                         "index":req.params.index,
                         "type":req.params.mtype,
                         "market":result["data"]["sh"+req.params.index]["qt"]["market"][0],
-                        "name":result["data"]["sh"+req.params.index]["qt"]["sh"+req.params.index][1]
+                        "others":result["data"]["sh"+req.params.index]["qt"]["sh"+req.params.index]
                     }
                 },
                 "msg":""
             }
-            client.write(JSON.stringify(front_return))
+            //client.write(JSON.stringify(front_return))
             res.send(front_return)
         });  
     }).on("error", function (err) {  
