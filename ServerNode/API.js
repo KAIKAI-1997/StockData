@@ -166,7 +166,7 @@ router.get('/:daytype(day1|day7|day30|day365)/:index', (req, res)=>{
                         "index":req.params.index,
                         "type":req.params.daytype,
                         "market":result["data"]["sh"+req.params.index]["qt"]["market"][0],
-                        "name":result["data"]["sh"+req.params.index]["qt"]["sh"+req.params.index][1]
+                        "others":result["data"]["sh"+req.params.index]["qt"]["sh"+req.params.index]
                     }
                 },
                 "msg":""
@@ -181,7 +181,7 @@ router.get('/:daytype(day1|day7|day30|day365)/:index', (req, res)=>{
                         "index":req.params.index,
                         "type":req.params.daytype,
                         "market":result["data"]["sh"+req.params.index]["qt"]["market"][0],
-                        "name":result["data"]["sh"+req.params.index]["qt"]["sh"+req.params.index]
+                        "name":result["data"]["sh"+req.params.index]["qt"]["sh"+req.params.index][1]
                     }
                 },
                 "msg":""
@@ -264,7 +264,7 @@ router.get('/:mtype(m1|m5|m15|m30|m60)/:index', (req, res)=>{
                         "index":req.params.index,
                         "type":req.params.mtype,
                         "market":result["data"]["sh"+req.params.index]["qt"]["market"][0],
-                        "name":result["data"]["sh"+req.params.index]["qt"]["sh"+req.params.index]
+                        "others":result["data"]["sh"+req.params.index]["qt"]["sh"+req.params.index]
                     }
                 },
                 "msg":""
