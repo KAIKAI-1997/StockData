@@ -7,10 +7,29 @@ CREATE TABLE IF NOT EXISTS index_name_match(
     CHINESE_NAME varchar(200) not null
 );
 
--- insert template 
-insert ignore into index_name_match () values ();
 
-create database if NOT exists stock_min;
+
+-- insert template 
+insert ignore into index_name_match () values ("81165","框架是刚刚");
+
+select * from index_name_match;
+delete from index_name_match where ATOCK_INDEX=81165;
+
+CREATE TABLE IF NOT EXISTS stock_day_data(
+	ATOCK_INDEX INT NOT NULL,
+    DAY_DATE varchar(15) not null,
+    DAY_STATRT varchar(15) not null,
+    DAY_END varchar(15) not null,
+    DAY_MAX varchar(15) not null,
+	DAY_MIN varchar(15) not null,
+	DAY_TRAYNING_VALUME varchar(20) not null,
+    primary key(ATOCK_INDEX,DAY_DATE)
+);
+
+insert ignore into stock_day_data () values ();
+insert ignore into stock_day_data () values ("2022-03-09", "1764.100", "1779.180", "1805.000", "1721.110", "56434.000");
+insert ignore into stock_day_data () values ("600519","2022-03-09", "1764.100", "1779.180", "1805.000", "1721.110", "56434.000");
+select * from stock_day_data;
 
 USE stock_min;
 

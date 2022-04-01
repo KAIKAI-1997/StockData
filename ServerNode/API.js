@@ -176,7 +176,7 @@ router.get('/:daytype(day1|day7|day30|day365)/:index', (req, res)=>{
                 "code":200,
                 "data":{
                     "aim":"insert",
-                    "points":data_final,
+                    "points":result["data"]["sh"+req.params.index]["qfqday"],
                     "details":{
                         "index":req.params.index,
                         "type":req.params.daytype,
@@ -274,7 +274,7 @@ router.get('/:mtype(m1|m5|m15|m30|m60)/:index', (req, res)=>{
                 "code":200,
                 "data":{
                     "aim":"insert",
-                    "points":data_final,
+                    "points":result["data"]["sh"+req.params.index][""+req.params.mtype],
                     "details":{
                         "index":req.params.index,
                         "type":req.params.mtype,
