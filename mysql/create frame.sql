@@ -28,8 +28,8 @@ CREATE TABLE IF NOT EXISTS stock_day_data(
 
 insert ignore into stock_day_data () values ();
 insert ignore into stock_day_data () values ("2022-03-09", "1764.100", "1779.180", "1805.000", "1721.110", "56434.000");
-insert ignore into stock_day_data () values ("600519","2022-03-09", "1764.100", "1779.180", "1805.000", "1721.110", "56434.000");
-select * from stock_day_data;
+insert ignore into stock_day_data () values ("600523","2020-03-09", "14.013", "13.113", "14.113", "13.033", "119638.000");
+select * from stock_day_data where ATOCK_INDEX=600523;
 
 USE stock_min;
 
@@ -37,6 +37,21 @@ CREATE TABLE IF NOT EXISTS index_name_match(
 	ATOCK_INDEX INT NOT NULL primary key,
     CHINESE_NAME varchar(200) not null
 );
+
+CREATE TABLE IF NOT EXISTS stock_min_600519(
+	DATEplusMIN_MIN varchar(15) NOT NULL,
+    STATRT_MIN varchar(15) not null,
+    END_MIN varchar(15) not null,
+    MAX_MIN varchar(15) not null,
+    MIN_MIN varchar(15) not null,
+    TRANING_TOTAL_MIN varchar(15) not null,
+	OTHERS varchar(200) not null,
+	EXCHANGE_RATIO varchar(20) not null,
+    primary key(DATEplusMIN_MIN)
+);
+
+insert ignore into stock_min_600519 () values ("202203091045","1788.00", "1786.61", "1793.50", "1780.00", "1550.95", "", 1.2346);
+select * from stock_day_data where ATOCK_INDEX=600523;
 
 -- insert template 
 insert ignore into index_name_match () values ();
