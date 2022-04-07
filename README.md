@@ -3,9 +3,8 @@
 账号root 密码admin
 2. c++ 服务器， 端口3070
 3. 中台nodejs服务器，前方http接口，后方TCP连接c++服务器
-数据请求api接口
-分时：localhost/:mtype(m1|m15|m30|m45|m60)/:index?number=xxx
-日K：
+
+先开c++服务器，再开node 服务器
 
 当前端接到请求的股票数据，向api
 日k线

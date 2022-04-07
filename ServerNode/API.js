@@ -35,7 +35,7 @@ function getYestoday() {
 //https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sh[股票代码],day,[开始日期],[结束日期 yyyy-m-d],[条数],qfq
 //api接口localhost/day/:index?startday=YYYY-MM-DD&endday=YYYY-MM-DD&number=30
 router.get('/:daytype(day1|day7|day30|day365)/:index', (req, res)=>{
-    console.log("connected from " + req.ip + ":"+req.socket.remotePort + " query " + req.headers.host + req.url+"\n")
+    console.log("connected from " + req.ip + ":"+req.socket.remotePort + " query " + req.headers.host + req.url)
 
     var number=300
     var data_final = []
@@ -98,7 +98,7 @@ router.get('/:daytype(day1|day7|day30|day365)/:index', (req, res)=>{
             result= JSON.parse(result)
 
             //no data response
-            if(result["msg"]=="param error"){
+            if(result["msg"]=="param error" || result["data"]["sh"+req.params.index]["qt"]["sh"+req.params.index].length==0){
                 var error_return = {
                     "code":503,
                     "data":{},
@@ -187,7 +187,7 @@ router.get('/:daytype(day1|day7|day30|day365)/:index', (req, res)=>{
                 "msg":""
             }
 
-            client.write(JSON.stringify(end_fetch))
+            client.write(JSON.stringify(end_fetch)+"\n")
             res.send(front_return)
         });  
     }).on("error", function (err) {  
@@ -245,7 +245,7 @@ router.get('/:mtype(m1|m5|m15|m30|m60)/:index', (req, res)=>{
             result= JSON.parse(result)
 
             //no data response
-            if(result["msg"]=="param error"){
+            if(result["msg"]=="param error" || result["data"]["sh"+req.params.index]["qt"]["sh"+req.params.index].length==0){
                 var error_return = {
                     "code":503,
                     "data":{},
@@ -254,6 +254,7 @@ router.get('/:mtype(m1|m5|m15|m30|m60)/:index', (req, res)=>{
                 res.send(error_return)
                 return ;
             }
+
 
             //set communicate json content
             var front_return = {
@@ -285,7 +286,8 @@ router.get('/:mtype(m1|m5|m15|m30|m60)/:index', (req, res)=>{
                 "msg":""
             }
 
-            client.write(JSON.stringify(end_fetch))
+            //加入换行符表示传输结束
+            client.write(JSON.stringify(end_fetch)+"\n")
             res.send(front_return)
         });  
     }).on("error", function (err) {  
@@ -302,7 +304,7 @@ router.get('/:mtype(m1|m5|m15|m30|m60)/:index', (req, res)=>{
 //https://web.ifzq.gtimg.cn/appstock/app/minute/query?code=[sh+股票代码]
 //api接口localhost/min/:index
 router.get('/min/:index', (req, res)=>{
-    console.log("connected from " + req.ip + ":"+req.socket.remotePort + " query " + req.headers.host + req.url+"\n")
+    console.log("connected from " + req.ip + ":"+req.socket.remotePort + " query " + req.headers.host + req.url)
 
     URL = `https://web.ifzq.gtimg.cn/appstock/app/minute/query?code=sh${req.params.index}`
     console.log(URL)

@@ -45,13 +45,13 @@ CREATE TABLE IF NOT EXISTS stock_min_600519(
     MAX_MIN varchar(15) not null,
     MIN_MIN varchar(15) not null,
     TRANING_TOTAL_MIN varchar(15) not null,
-	OTHERS varchar(200) not null,
 	EXCHANGE_RATIO varchar(20) not null,
     primary key(DATEplusMIN_MIN)
 );
 
-insert ignore into stock_min_600519 () values ("202203091045","1788.00", "1786.61", "1793.50", "1780.00", "1550.95", "", 1.2346);
-select * from stock_day_data where ATOCK_INDEX=600523;
+insert ignore into stock_min_600519 () values ("202203091045","1788.00", "1786.61", "1793.50", "1780.00", "1550.95", {}, 1.2346);
+insert ignore into stock_min_600519 () values (202204061500, "1757.88", "1765.00", "1765.03", "1757.10", "1903.00", "1.51");
+select * from stock_min_600521;
 
 -- insert template 
 insert ignore into index_name_match () values ();
