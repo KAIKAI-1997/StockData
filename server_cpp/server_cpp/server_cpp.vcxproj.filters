@@ -29,5 +29,8 @@
     <ClInclude Include="cJSON.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="C:\Program Files\MySQL\MySQL Server 8.0\include\mysql.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

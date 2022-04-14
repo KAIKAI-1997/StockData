@@ -1,0 +1,1 @@
+g++ -o "/root/projects/server_cpp_linux/bin/x64/Release/server_cpp_linux.out" -Wl,--no-undefined -Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack /root/projects/server_cpp_linux/obj/x64/Release/main.o
